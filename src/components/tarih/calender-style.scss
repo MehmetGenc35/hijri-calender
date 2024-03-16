@@ -1,0 +1,98 @@
+
+
+.outside {
+    
+    border-radius: 5px;
+    padding: 10px;
+   
+    margin: 10px 10px;
+    width: 400px;
+    height: 500px;
+    max-width: 400px;
+    background-image: url('../../../public/img/day.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    position: relative;
+
+}
+@media (min-width: 900px) {
+  .outside {
+    width: 33%;
+  }
+}
+
+@media (max-width: 900px) {
+  .outside {
+    width: 90%;
+  }
+}
+@media (min-width:900px) and (max-width: 1200px) {
+  .outside {
+    width: 70%;
+  }
+}
+
+.date-top{
+  text-align: center;
+  color: rgb(240, 250, 226);
+  text-shadow: 2px 2px 5px #888888;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px auto;
+  width: 90%;
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+
+}
+
+.countRamadanDay{
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 5px #888888;
+  font-weight: bold;
+  font-size: 200px;
+  margin-bottom: 10px;
+  width: 90%;  
+  height: 300px;
+  margin: auto;
+  line-height: 300px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: inline-block;
+
+}
+
+.hicriDate{
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 5px #888888;
+  font-weight: bold;
+  font-size: 20px;
+  width: 90%;  
+  height: 50px;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:0;
+  position: absolute;
+  top: 70%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  h2{
+    
+    margin: 0;
+  }  
+}
+
