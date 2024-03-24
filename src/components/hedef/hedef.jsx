@@ -1,15 +1,18 @@
 
 
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
-import Converter from '../tarih/script';
 import { MdOutlineCancel } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
+import StoreContext from '../../store';
 
 const Hedef = () => {
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
-  const [btnVal, setBtnVal] = useState(false);
+  let {hijriDay}=useContext(StoreContext);
+
+  hijriDay=Number(hijriDay.startsWith('0')?hijriDay.slice(1):hijriDay);
+  hijriDay=hijriDay==0? 1 : hijriDay;
  
   const changeInput = () => {
   if (text !== "" && items.length < 3) {
@@ -18,11 +21,7 @@ const Hedef = () => {
   }    
   }
 
-  let hijriDay=Converter(0);
-  hijriDay=Number(hijriDay.startsWith('0')?hijriDay.slice(1):hijriDay);
-  hijriDay=hijriDay===0?1:hijriDay;
 
-  //tabloyu locale kaydetme
   const changeButtonValue=() => {
     const newItems = [...items];
     setItems(newItems);
@@ -39,7 +38,6 @@ useEffect(() => {
 }, [hijriDay]);
 
 
-//-----------------------------------------------------------------------
 
   return (
 

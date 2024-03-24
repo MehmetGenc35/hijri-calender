@@ -1,12 +1,15 @@
 
 
-import React from 'react'
-import Converter from './script.js';
+import React, { useContext } from 'react'
+import StoreContext from '../../store/index.js';
 
 
 const HicriDate = () => {
-  let mounth=Converter(1);
-  const year=Converter(2);
+  let {hijriMonth,hijriYear}=useContext(StoreContext);
+
+  let month=hijriMonth;
+  const year=hijriYear;
+  
   const hicriAylar = [
 "MUHARREM",
 "SAFAR",
@@ -22,11 +25,11 @@ const HicriDate = () => {
 "ZİLHİCCE"
 ];
 
-mounth=mounth.startsWith('0')?mounth.slice(1):mounth;
+month=month.startsWith('0')?month.slice(1):month;
 
   return (
     <div className='hicriDate' >
-      <h2>{hicriAylar[mounth-1]}</h2>
+      <h2>{hicriAylar[month-1]}</h2>
       <h2>{year}</h2>
     </div>
   )

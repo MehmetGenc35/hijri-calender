@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Converter from '../tarih/script';
+import React, { useState, useEffect, useContext } from 'react';
+import StoreContext from '../../store';
 
 const Namaz = () => {
   const [checkboxes, setCheckboxes] = useState([false, false, false, false, false]);
+  let {hijriDay}=useContext(StoreContext);
 
-  let hijriDay=Converter(0);
   hijriDay=Number(hijriDay.startsWith('0')?hijriDay.slice(1):hijriDay);
-  hijriDay=hijriDay===0?1:hijriDay;
+  hijriDay=hijriDay==0? 1 : hijriDay;
 
   const handleCheckboxChange = (index) => {
     const newCheckboxes = [...checkboxes];

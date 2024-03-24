@@ -1,13 +1,12 @@
 
 
-import React from 'react'
-
-import Converter from './script.js';
+import React, { useContext } from 'react'
+import StoreContext from '../../store/index.js';
 
 const DayRamadan = () => {
-    
+  let {hijriDay}=useContext(StoreContext);
   
-  let hijriDay=Converter(0);
+
   hijriDay=hijriDay.startsWith('0')?hijriDay.slice(1):hijriDay;
   
   return (
