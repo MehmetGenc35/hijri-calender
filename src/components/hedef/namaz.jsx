@@ -2,15 +2,25 @@ import React, { useState, useEffect, useContext } from 'react';
 import StoreContext from '../../store';
 
 const Namaz = () => {
-  const [checkboxes, setCheckboxes] = useState([false, false, false, false, false]);
+const [checkboxes, setCheckboxes] = useState({
+  sabah: false,
+  ögle: false,
+  ikindi: false,
+  aksam: false,
+  yatsi: false,
+});
+
+
   let {hijriDay}=useContext(StoreContext);
 
   hijriDay=Number(hijriDay.startsWith('0')?hijriDay.slice(1):hijriDay);
   hijriDay=hijriDay==0? 1 : hijriDay;
 
   const handleCheckboxChange = (index) => {
-    const newCheckboxes = [...checkboxes];
-    newCheckboxes[index] = !newCheckboxes[index];
+    const arr = Object.keys(checkboxes);
+    const key = arr[index];
+    const newCheckboxes = { ...checkboxes };
+    newCheckboxes[key] = !newCheckboxes[key];
     setCheckboxes(newCheckboxes);
     localStorage.setItem(`${hijriDay}. gün`, JSON.stringify(newCheckboxes));
   };
@@ -25,13 +35,14 @@ useEffect(() => {
 }, [hijriDay]);
 
   const vakitler=["sabah","öğle", "ikindi", "akşam", "yatsı"];
+  const checkboxesArray = Object.values(checkboxes);
 
   return (
     <div className='namaz'>
       
       <h6>Namazlarım</h6>
       <div className="checkboxes">
-        {checkboxes.map((checked, index) => (
+        {checkboxesArray.map((checked, index) => (
         <label key={index} style={{fontSize: '15px'}}>
           <input
             style={{width: '15px', height: '15px'}}
