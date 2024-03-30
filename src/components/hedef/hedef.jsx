@@ -9,8 +9,8 @@ import StoreContext from '../../store';
 const Hedef = () => {
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
-  let {hijriDay}=useContext(StoreContext);
 
+  let {hijriDay}=useContext(StoreContext);
   hijriDay=Number(hijriDay.startsWith('0')?hijriDay.slice(1):hijriDay);
   hijriDay=hijriDay==0? 1 : hijriDay;
  
@@ -36,6 +36,17 @@ useEffect(() => {
     localStorage.setItem(`${hijriDay}. gün hedef`, JSON.stringify(items));
   }
 }, [hijriDay]);
+
+const handleDelete = (index) => {
+  let userConfirmation = window.confirm("silmek istediğinizden emin misiniz?");
+  if(!userConfirmation) return;
+  const newItems = [...items];
+  newItems.splice(index, 1);
+  setItems(newItems);
+  localStorage.setItem(`${hijriDay}. gün hedef`, JSON.stringify(newItems));
+}
+
+
 
 
 
@@ -64,7 +75,8 @@ useEffect(() => {
           <tr key={index}>
             <td>{hijriDay}</td>
             <td>{item}</td>
-            <td><MdOutlineCancel /><TiTick /></td>
+            <td><MdOutlineCancel onClick={()=>handleDelete(index)} />
+            <TiTick /></td>
           </tr>
         ))}
       </tbody>
